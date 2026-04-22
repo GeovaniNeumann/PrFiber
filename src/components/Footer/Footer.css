@@ -1,0 +1,274 @@
+/* Footer Component Styles */
+
+.footer {
+  background: #0a0a0f;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 80px 32px 0;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.6), transparent);
+}
+
+/* ── GRID PRINCIPAL ── */
+.footer__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 48px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── BRAND ── */
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer__logo {
+  display: block;
+  width: fit-content;
+  /* Fallback para browsers sem fit-content */
+  width: -moz-fit-content;
+  margin-bottom: 8px;
+}
+
+.footer__logo-img {
+  height: 50px;
+  width: auto;
+  display: block; /* Necessário para transform funcionar corretamente */
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.footer__logo-img:hover {
+  transform: scale(1.02);
+  filter: drop-shadow(0 0 10px rgba(14, 165, 233, 0.5));
+}
+
+.footer__tagline {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 8px;
+}
+
+.footer__anatel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 16px;
+  border-radius: 12px;
+  /* fit-content com fallback */
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-top: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer__anatel-img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+.footer__anatel span {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.03em;
+}
+
+/* ── COLUNAS ── */
+.footer__col h4 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: white;
+  margin-bottom: 24px;
+  position: relative;
+  display: inline-block;
+}
+
+.footer__col h4::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 35px;
+  height: 2px;
+  background: linear-gradient(90deg, #0ea5e9, #6097f5);
+  border-radius: 2px;
+}
+
+.footer__col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── LINKS E BOTÕES — seletor unificado via classe ── */
+.footer__col ul a,
+.footer-link {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.25s ease, transform 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.footer__col ul a:hover,
+.footer-link:hover {
+  color: #0ea5e9;
+  transform: translateX(5px);
+}
+
+.footer__col ul a:focus-visible,
+.footer-link:focus-visible {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Ícone SVG nos links de contato */
+.footer-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  stroke: #6097f5;
+  transition: stroke 0.25s ease;
+}
+
+.footer__col ul a:hover .footer-icon {
+  stroke: #0ea5e9;
+}
+
+/* ── RODAPÉ INFERIOR ── */
+.footer__bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer__bottom p {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.footer__dev {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.dev-link {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.dev-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #0ea5e9, #6097f5);
+  transition: width 0.3s ease;
+}
+
+.dev-link:hover {
+  color: #0ea5e9;
+}
+
+.dev-link:hover::after {
+  width: 100%;
+}
+
+.dev-link:focus-visible {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .footer__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 60px 24px 0;
+  }
+
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .footer__dev {
+    justify-content: center;
+  }
+
+  .footer__anatel {
+    width: 100%;
+    -moz-width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 50px 16px 0;
+  }
+
+  .footer__logo-img {
+    height: 40px;
+  }
+
+  .footer__anatel {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}
