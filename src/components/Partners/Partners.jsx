@@ -8,7 +8,7 @@ import img4 from '../../assets/carrossel/imagem4.png';
 import img5 from '../../assets/carrossel/imagem5.png';
 import img6 from '../../assets/carrossel/imagem6.png';
 import img7 from '../../assets/carrossel/imagem7.png';
-import img8 from '../../assets/carrossel/imagem8.png';
+
 
 const partners = [
   { id: 1, src: img1, alt: 'Parceiro 1' },
@@ -18,7 +18,6 @@ const partners = [
   { id: 5, src: img5, alt: 'Parceiro 5' },
   { id: 6, src: img6, alt: 'Parceiro 6' },
   { id: 7, src: img7, alt: 'Parceiro 7' },
-  { id: 8, src: img8, alt: 'Parceiro 8' },
 ];
 
 export default function Partners() {
