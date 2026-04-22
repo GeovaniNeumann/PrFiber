@@ -168,7 +168,7 @@ export default function AppCta() {
               </div>
             </div>
           </div>
-        </div>
+        </div>  
       </div>
     </section>
   );

@@ -40,8 +40,8 @@ export default function About() {
           <div className="about__image-wrapper">
             <img src={aboutImage} alt="PR Fiber - Nossa Empresa" />
             <div className="about__experience">
-              <span className="about__experience-number">100%</span>
-              <span className="about__experience-text">Fibra<br />Óptica</span>
+              <span className="about__experience-number">+15</span>
+              <span className="about__experience-text">Anos de<br />experiência</span>
             </div>
           </div>
         </div>
