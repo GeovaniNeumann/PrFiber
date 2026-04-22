@@ -4,24 +4,13 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   build: {
-    target: 'es2015',
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    },
+    assetsInlineLimit: 0, // Não inline imagens grandes
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom']
         }
       }
-    },
-    chunkSizeWarningLimit: 500
-  },
-  server: {
-    port: 3000
+    }
   }
 });
