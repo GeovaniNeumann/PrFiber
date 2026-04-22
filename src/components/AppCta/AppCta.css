@@ -5,6 +5,8 @@
   padding: 100px 32px;
   position: relative;
   overflow: hidden;
+  /* FIX: impede que os glows com filter:blur vazem horizontalmente */
+  isolation: isolate;
 }
 
 /* ── PARTÍCULAS DE FUNDO ──
@@ -102,6 +104,22 @@
   background: radial-gradient(circle, rgba(52, 114, 232, 0.3), transparent 70%);
   bottom: -150px;
   left: -150px;
+}
+
+/* FIX: reduz glows em mobile para evitar vazamento com filter:blur */
+@media (max-width: 768px) {
+  .app-cta__glow--1 {
+    width: 300px;
+    height: 300px;
+    right: -100px;
+    top: -100px;
+  }
+  .app-cta__glow--2 {
+    width: 250px;
+    height: 250px;
+    left: -80px;
+    bottom: -80px;
+  }
 }
 
 /* ── LAYOUT ── */

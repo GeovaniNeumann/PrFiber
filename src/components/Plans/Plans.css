@@ -50,15 +50,19 @@
   background: linear-gradient(160deg, #eef5ff 0%, #ddeaff 55%, #cfe0ff 100%);
   position: relative;
   overflow: hidden;
+  /* FIX: garante que os blobs decorativos não causem scroll lateral */
+  max-width: 100%;
 }
 
-/* Decorative blobs */
+/* Decorative blobs — clip-path garante que não vazam além dos limites da seção */
 .plans::before,
 .plans::after {
   content: '';
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
+  /* FIX: clip evita vazamento em mobile */
+  clip-path: inset(0);
 }
 
 .plans::before {
@@ -67,6 +71,8 @@
   background: radial-gradient(circle, rgba(52, 114, 232, 0.12) 0%, transparent 70%);
   top: -120px;
   right: -80px;
+  /* FIX: limita a borda direita para não vazar */
+  max-width: calc(50vw + 80px);
 }
 
 .plans::after {

@@ -79,7 +79,7 @@ export default function Header() {
             alt="PR Fiber"
             className="header__logo-img"
             loading="eager"
-            fetchPriority="high"
+            fetchpriority="high"
           />
         </a>
 
