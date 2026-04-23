@@ -41,11 +41,13 @@
   z-index: 1;
 }
 
-.hero__bg-image--current.fade-out {
+.hero__bg-image--current.fade-out,
+.hero__content.fade-out {
   animation: fadeOut 0.5s ease-in-out forwards;
 }
 
-.hero__bg-image--next.fade-in {
+.hero__bg-image--next.fade-in,
+.hero__content.fade-in {
   animation: fadeIn 0.5s ease-in-out forwards;
 }
 
@@ -259,53 +261,6 @@
   background: rgba(255, 255, 255, 0.8);
 }
 
-/* Scroll hint */
-.hero__scroll-hint {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: color 0.3s ease, transform 0.3s ease;
-  z-index: 10;
-  background: none;
-  border: none;
-  padding: 0;
-}
-
-.hero__arrow {
-  width: 22px;
-  height: 36px;
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  border-radius: 30px;
-  position: relative;
-}
-
-.hero__arrow span {
-  position: absolute;
-  top: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 10px;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 2px;
-  animation: scrollWheel 2s ease-in-out infinite;
-}
-
-@keyframes scrollWheel {
-  0%   { opacity: 1; transform: translateX(-50%) translateY(0); }
-  100% { opacity: 0; transform: translateX(-50%) translateY(16px); }
-}
-
 /* ── DESKTOP: Dots alinhados com o conteúdo ── */
 @media (min-width: 769px) {
   .hero__dots {
@@ -333,6 +288,8 @@
     transform: translateY(20px);
     display: flex;
     flex-direction: column;
+    min-height: 400px; /* Evita saltos de layout durante a troca */
+    justify-content: flex-end;
   }
 
   .hero__content.visible { transform: translateY(0); }
@@ -371,13 +328,4 @@
     margin-top: 32px;
     justify-content: center;
   }
-}
-
-@media (max-width: 480px) {
-  .hero { padding: 70px 16px 32px; }
-  .hero__title { font-size: clamp(1.5rem, 7vw, 1.9rem); }
-  .hero__subtitle { font-size: 0.85rem; }
-  .hero__trust { gap: 12px; }
-  .trust-item { gap: 6px; font-size: 0.7rem; }
-  .hero__dots { margin-top: 28px; }
 }
