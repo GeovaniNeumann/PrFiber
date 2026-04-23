@@ -1,24 +1,46 @@
-/* About Component Styles - Versão Harmonizada */
+/* ============================================================
+   About Component — PRFIBER Design System
+   ============================================================ */
 
 .about {
   padding: 100px 32px;
-  background: #ffffff;
+  background: #e6ecf7;
   position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(26,85,200,0.3), transparent);
+}
+
+.about::after {
+  content: '';
+  position: absolute;
+  bottom: -150px; left: -100px;
+  width: 450px; height: 450px;
+  background: radial-gradient(circle, rgba(26, 85, 200, 0.05) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .about__container {
-  max-width: 1300px;
+  max-width: 1280px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: 1fr 1.15fr;
   gap: 80px;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
-/* Imagem */
+/* Image */
 .about__image {
   opacity: 0;
-  transform: translateX(-30px);
+  transform: translateX(-32px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -38,46 +60,46 @@
   width: 100%;
   height: auto;
   display: block;
-  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.1));
+  border-radius: 24px;
+  filter: drop-shadow(0 20px 36px rgba(10, 22, 40, 0.14));
   transition: all 0.5s ease;
 }
 
 .about__image-wrapper:hover img {
   transform: translateY(-8px);
-  filter: drop-shadow(0 30px 40px rgba(26, 85, 200, 0.15));
+  filter: drop-shadow(0 32px 48px rgba(26, 85, 200, 0.18));
 }
 
 .about__experience {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 20px; right: 20px;
   background: linear-gradient(135deg, #1a55c8, #3472e8);
   color: white;
-  padding: 20px 28px;
-  border-radius: 20px;
+  padding: 18px 24px;
+  border-radius: 18px;
   text-align: center;
-  box-shadow: 0 10px 25px -5px rgba(26, 85, 200, 0.3);
+  box-shadow: 0 10px 28px rgba(26, 85, 200, 0.35);
 }
 
 .about__experience-number {
   display: block;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 800;
   line-height: 1;
 }
 
 .about__experience-text {
   display: block;
-  font-size: 0.85rem;
-  opacity: 0.95;
+  font-size: 0.8rem;
+  opacity: 0.92;
   margin-top: 6px;
   font-weight: 500;
 }
 
-/* Conteúdo */
+/* Content */
 .about__content {
   opacity: 0;
-  transform: translateX(30px);
+  transform: translateX(32px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
 }
 
@@ -87,33 +109,40 @@
 }
 
 .about__badge {
-  display: inline-block;
-  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #1a55c8;
-  background: rgba(26, 85, 200, 0.1);
-  padding: 6px 16px;
-  border-radius: 6px;
+  background: rgba(26, 85, 200, 0.08);
+  border: 1px solid rgba(26, 85, 200, 0.18);
+  padding: 5px 14px;
+  border-radius: 40px;
   margin-bottom: 24px;
 }
 
 .about__title {
-  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-size: clamp(2rem, 4.5vw, 3rem);
   font-weight: 800;
   color: #0f1f3d;
-  line-height: 1.25;
+  line-height: 1.2;
   margin-bottom: 28px;
+  letter-spacing: -0.02em;
 }
 
 .about__title--accent {
-  color: #1a55c8;
+  background: linear-gradient(135deg, #1a55c8, #3472e8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .about__text {
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.75;
   color: #3a4a6a;
   margin-bottom: 24px;
 }
@@ -123,25 +152,24 @@
   font-weight: 700;
 }
 
-/* Stats - Removido conforme solicitado */
-
 /* Pillars */
 .about__pillars {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 14px;
   margin-bottom: 40px;
 }
 
 .pillar {
   display: flex;
-  gap: 24px;
+  gap: 20px;
   align-items: flex-start;
-  padding: 24px;
-  background: #f8fafc;
+  padding: 20px 22px;
+  background: #ffffff;
   border-radius: 16px;
+  border: 1px solid rgba(26, 85, 200, 0.08);
+  box-shadow: 0 2px 10px rgba(10, 22, 40, 0.05);
   transition: all 0.3s ease;
-  border: 1px solid rgba(26, 85, 200, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -149,43 +177,40 @@
 .pillar::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 5px;
-  height: 100%;
-  background: linear-gradient(135deg, #1a55c8, #3472e8);
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(180deg, #1a55c8, #3472e8);
   transform: scaleY(0);
   transition: transform 0.3s ease;
 }
 
-.pillar:hover::before {
-  transform: scaleY(1);
-}
+.pillar:hover::before { transform: scaleY(1); }
 
 .pillar:hover {
-  border-color: rgba(26, 85, 200, 0.3);
-  box-shadow: 0 8px 20px rgba(26, 85, 200, 0.08);
-  transform: translateX(5px);
-  background: #ffffff;
+  border-color: rgba(26, 85, 200, 0.2);
+  box-shadow: 0 8px 24px rgba(26, 85, 200, 0.1);
+  transform: translateX(6px);
+  background: #fafcff;
 }
 
 .pillar__line {
-  width: 40px;
-  height: 3px;
+  width: 36px; height: 3px;
   background: linear-gradient(90deg, #1a55c8, #6097f5);
-  margin-top: 12px;
+  margin-top: 10px;
   flex-shrink: 0;
+  border-radius: 2px;
 }
 
 .pillar h4 {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   font-weight: 800;
   color: #0f1f3d;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
 }
 
 .pillar p {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   line-height: 1.6;
   color: #3a4a6a;
 }
@@ -194,21 +219,21 @@
 .about__cta {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   background: none;
   border: none;
   color: #1a55c8;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
-  padding: 14px 0;
+  padding: 12px 0;
   transition: all 0.3s ease;
   border-bottom: 2px solid transparent;
+  letter-spacing: -0.01em;
 }
 
 .about__cta svg {
-  width: 20px;
-  height: 20px;
+  width: 18px; height: 18px;
   transition: transform 0.3s ease;
 }
 
@@ -217,108 +242,31 @@
   border-bottom-color: #1a55c8;
 }
 
-.about__cta:hover svg {
-  transform: translateX(5px);
-}
+.about__cta:hover svg { transform: translateX(6px); }
 
-/* Responsivo Desktop */
-@media (min-width: 1440px) {
-  .about__container {
-    max-width: 1400px;
-    gap: 100px;
-  }
-  
-  .about__text {
-    font-size: 1.1rem;
-  }
-  
-  .pillar p {
-    font-size: 1rem;
-  }
-  
-  .pillar h4 {
-    font-size: 1.3rem;
-  }
-}
-
+/* Responsive */
 @media (max-width: 1024px) {
   .about { padding: 80px 32px; }
-  .about__container { gap: 50px; }
-  
-  .about__text {
-    font-size: 1rem;
-  }
-  
-  .pillar {
-    padding: 20px;
-  }
-  
-  .pillar h4 {
-    font-size: 1.1rem;
-  }
+  .about__container { gap: 48px; }
 }
 
 @media (max-width: 900px) {
   .about__container { grid-template-columns: 1fr; gap: 48px; }
-  .about__image { max-width: 450px; margin: 0 auto; }
-  .about__experience { bottom: 15px; right: 15px; padding: 15px 20px; }
-  .about__experience-number { font-size: 1.8rem; }
-  .about__experience-text { font-size: 0.75rem; }
+  .about__image { max-width: 440px; margin: 0 auto; }
 }
 
 @media (max-width: 768px) {
-  .about { padding: 60px 24px; }
-  
-  .about__badge {
-    font-size: 0.75rem;
-    padding: 4px 12px;
-  }
-  
-  .about__title {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-  }
-  
-  .about__text {
-    font-size: 0.95rem;
-    margin-bottom: 20px;
-  }
-  
-  .pillar {
-    padding: 16px;
-    gap: 16px;
-  }
-  
-  .pillar__line {
-    width: 30px;
-    margin-top: 8px;
-  }
-  
-  .pillar h4 {
-    font-size: 1rem;
-  }
-  
-  .pillar p {
-    font-size: 0.85rem;
-  }
+  .about { padding: 64px 24px; }
+  .about__title { font-size: 1.9rem; margin-bottom: 20px; }
+  .about__text { font-size: 0.95rem; }
+  .pillar { padding: 16px 18px; gap: 16px; }
+  .pillar h4 { font-size: 0.95rem; }
+  .pillar p { font-size: 0.82rem; }
 }
 
 @media (max-width: 480px) {
-  .about { padding: 50px 20px; }
+  .about { padding: 52px 20px; }
   .about__experience { display: none; }
-  
-  .pillar {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
-  
-  .pillar__line {
-    width: 50px;
-    margin: 0 0 12px 0;
-  }
-  
-  .about__cta {
-    font-size: 0.9rem;
-  }
+  .pillar { flex-direction: column; }
+  .pillar__line { width: 40px; margin: 0 0 10px 0; }
 }

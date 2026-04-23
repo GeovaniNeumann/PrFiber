@@ -6,8 +6,8 @@ const scrollTo = (id) => {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 };
 
-/* SVGs inline como componentes — sem dependência de biblioteca,
-   sem emojis lidos por screen readers */
+const WHATSAPP_URL = "https://wa.me/5541999976337?text=Olá!%20Gostaria%20de%20contratar%20a%20PRFIBER";
+
 const IconPhone = () => (
   <svg className="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -36,154 +36,67 @@ const IconSpeed = () => (
 export default function Footer() {
   return (
     <>
-      {/* CORREÇÃO: âncora "contato" separada do <footer> landmark.
-          O <footer> não deve ter id de navegação — mistura landmark
-          semântico com âncora de scroll, causando ambiguidade para
-          screen readers e posicionamento incorreto do scroll. */}
       <div id="contato" aria-hidden="true" style={{ position: 'relative', top: '-80px' }} />
 
-      <footer className="footer" aria-label="Rodapé do site">
+      <footer className="footer" aria-label="Rodapé PRFIBER">
         <div className="footer__inner">
 
           {/* Brand */}
           <div className="footer__brand">
-            <a href="#inicio" className="footer__logo" aria-label="PR Fiber — voltar ao topo">
-              <img
-                src={footerLogo}
-                alt="PR Fiber"
-                className="footer__logo-img"
-                loading="lazy"
-              />
+            <a href="#inicio" className="footer__logo" aria-label="PRFIBER — voltar ao topo">
+              <img src={footerLogo} alt="PRFIBER" className="footer__logo-img" loading="lazy" />
             </a>
             <p className="footer__tagline">
-              Conectando o Paraná com velocidade,<br />estabilidade e respeito ao cliente.
+              Internet de verdade, com atendimento de verdade.<br />
+              Fibra óptica 100% dedicada para você.
             </p>
             <div className="footer__anatel" aria-label="Certificação ANATEL">
-              <img
-                src={anatelLogo}
-                alt="Logotipo ANATEL"
-                className="footer__anatel-img"
-                loading="lazy"
-              />
+              <img src={anatelLogo} alt="Logotipo ANATEL" className="footer__anatel-img" loading="lazy" />
               <span>Operadora homologada pela ANATEL</span>
             </div>
           </div>
 
-          {/* Empresa */}
-          <nav className="footer__col" aria-label="Navegação — Empresa">
-            <h4>Empresa</h4>
+          {/* Navegação */}
+          <nav className="footer__col" aria-label="Navegação - PRFIBER">
+            <h4>Navegação</h4>
             <ul>
-              <li>
-                <button type="button" onClick={() => scrollTo('empresa')} className="footer-link">
-                  Quem Somos
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => scrollTo('vantagens')} className="footer-link">
-                  Tecnologia
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={() => scrollTo('planos')} className="footer-link">
-                  Planos
-                </button>
-              </li>
+              <li><button type="button" onClick={() => scrollTo('inicio')} className="footer-link">Início</button></li>
+              <li><button type="button" onClick={() => scrollTo('sobre')} className="footer-link">Sobre</button></li>
+              <li><button type="button" onClick={() => scrollTo('planos')} className="footer-link">Planos</button></li>
+              <li><button type="button" onClick={() => scrollTo('vantagens')} className="footer-link">Vantagens</button></li>
+              <li><button type="button" onClick={() => scrollTo('suporte')} className="footer-link">Suporte</button></li>
             </ul>
           </nav>
 
           {/* Cliente */}
-          <nav className="footer__col" aria-label="Navegação — Cliente">
+          <nav className="footer__col" aria-label="Área do Cliente">
             <h4>Cliente</h4>
             <ul>
-              <li>
-                <a
-                  href="http://i9fibras.ispfycloud.com.br/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Acessar Área do Cliente (abre em nova aba)"
-                >
-                  Área do Cliente
-                </a>
-              </li>
-              <li>
-                <a
-                  href="http://i9fibras.ispfycloud.com.br/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Emitir 2ª Via do Boleto (abre em nova aba)"
-                >
-                  2ª Via do Boleto
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://wa.me/5541997152514"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Suporte via WhatsApp (abre em nova aba)"
-                >
-                  Suporte
-                </a>
-              </li>
+              <li><a href="http://i9fibras.ispfycloud.com.br/" target="_blank" rel="noopener noreferrer">Área do Cliente</a></li>
+              <li><a href="http://i9fibras.ispfycloud.com.br/" target="_blank" rel="noopener noreferrer">2ª Via do Boleto</a></li>
+              <li><a href="https://wa.me/5541997152514?text=Olá%20preciso%20de%20suporte" target="_blank" rel="noopener noreferrer">Suporte WhatsApp</a></li>
+              <li><a href="http://fast.com/pt" target="_blank" rel="noopener noreferrer">Teste de Velocidade</a></li>
             </ul>
           </nav>
 
-          {/* Contato — CORREÇÃO: emojis removidos, substituídos por SVGs com aria-hidden */}
+          {/* Contato */}
           <div className="footer__col">
             <h4>Contato</h4>
             <ul>
-              <li>
-                <a href="tel:+5541999976337" aria-label="Ligar para (41) 99997-6337">
-                  <IconPhone />
-                  (41) 99997-6337
-                </a>
-              </li>
-              <li>
-                <a href="mailto:financeiro.prfiber@gmail.com" aria-label="Enviar e-mail para financeiro.prfiber@gmail.com">
-                  <IconMail />
-                  financeiro.prfiber@gmail.com
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://wa.me/5541999976337"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Conversar via WhatsApp (abre em nova aba)"
-                >
-                  <IconWhatsApp />
-                  WhatsApp
-                </a>
-              </li>
-              <li>
-                <a
-                  href="http://fast.com/pt"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Teste de Velocidade no Fast.com (abre em nova aba)"
-                >
-                  <IconSpeed />
-                  Teste de Velocidade
-                </a>
-              </li>
+              <li><a href="tel:+5541999976337"><IconPhone /> (41) 99997-6337</a></li>
+              <li><a href="mailto:financeiro.prfiber@gmail.com"><IconMail /> financeiro.prfiber@gmail.com</a></li>
+              <li><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"><IconWhatsApp /> WhatsApp</a></li>
             </ul>
           </div>
+
         </div>
 
         {/* Bottom bar */}
         <div className="footer__bottom">
-          <p>© {new Date().getFullYear()} PR Fiber. Todos os direitos reservados.</p>
+          <p>© {new Date().getFullYear()} PRFiber. Todos os direitos reservados.</p>
           <div className="footer__dev">
             <span>Desenvolvido por</span>
-            <a
-              href="https://portifolio-geovani.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="dev-link"
-              aria-label="Portfólio de Geovani Neumann (abre em nova aba)"
-            >
-              Geovani Neumann
-            </a>
+            <a href="https://portifolio-geovani.vercel.app/" target="_blank" rel="noopener noreferrer" className="dev-link">Geovani Neumann</a>
           </div>
         </div>
       </footer>

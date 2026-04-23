@@ -22,66 +22,67 @@ function useInView(threshold = 0.15) {
 
 const features = [
   {
-    key: 'wifi6',
-    title: 'Wi-Fi 6 Incluso',
-    desc: 'Roteador de última geração com cobertura total, mais velocidade e menor interferência para sua casa ou escritório.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M5 12.55a11 11 0 0 1 14.08 0" />
-        <path d="M1.42 9a16 16 0 0 1 21.16 0" />
-        <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
-        <line x1="12" y1="20" x2="12.01" y2="20" />
-      </svg>
-    ),
-  },
-  {
-    key: 'humano',
-    title: 'Atendimento 100% Humano',
-    desc: 'Nada de robôs ou menus infinitos. Fale com especialistas reais que entendem sua necessidade e resolvem na hora.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-      </svg>
-    ),
-  },
-  {
     key: 'instalacao',
-    title: 'Instalação Rápida',
-    desc: 'Equipe técnica própria e ágil. Agilidade na instalação sem burocracia para você conectar em até 24h.',
+    title: 'Instalação rápida',
+    desc: 'Equipe técnica qualificada para instalar sua internet sem enrolação. Você contratou, a gente instala.',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+        <polyline points="22 4 12 14.01 9 11.01" />
       </svg>
     ),
   },
   {
     key: 'manutencao',
-    title: 'Manutenção Expressa',
-    desc: 'Suporte técnico local com resposta imediata. Se algo sair do padrão, nossa equipe vai até você com prioridade.',
+    title: 'Manutenção ágil',
+    desc: 'Problemas resolvidos rápido. Nossa equipe técnica está sempre pronta para garantir sua conexão no ar.',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
       </svg>
     ),
   },
   {
-    key: 'app',
-    title: 'Gestão pelo App',
-    desc: 'Acesse sua conta, visualize boletos e solicite suporte direto pelo celular.',
+    key: 'atendimento',
+    title: 'Atendimento humano (sem robôs)',
+    desc: 'Aqui você fala com pessoas de verdade, não com robôs. Atendimento rápido, eficiente e que resolve.',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-        <line x1="12" y1="18" x2="12.01" y2="18" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
       </svg>
     ),
   },
   {
-    key: 'desconto',
-    title: 'Desconto Fidelidade',
-    desc: 'Pague em dia e garanta preço especial todo mês. Sem burocracia.',
+    key: 'fidelidade',
+    title: 'Sem fidelidade',
+    desc: 'Você não é obrigado a ficar. Sem multas, sem contrato amarrado. Você só fica se estiver satisfeito.',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+      </svg>
+    ),
+  },
+  {
+    key: 'indicacao',
+    title: 'Indique um amigo e ganhe benefícios',
+    desc: 'Chame seus amigos para a PRFIBER e ganhe desconto na sua mensalidade. Quanto mais indica, mais vantagens.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
+  },
+  {
+    key: 'analise',
+    title: 'Análise de localidade gratuita',
+    desc: 'Sem compromisso. Verificamos se sua região tem cobertura e qual a melhor solução para você.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+        <circle cx="12" cy="10" r="3" />
       </svg>
     ),
   },
@@ -94,9 +95,13 @@ export default function Features() {
     <section className="features" id="vantagens">
       <div className="features__inner">
         <header className="features__header">
-          <span className="features__badge">DIFERENCIAIS</span>
-          <h2>Por que escolher a PR Fiber?</h2>
-          <p>Tecnologia de ponta com benefícios exclusivos para você</p>
+          <span className="features__badge">✦ Vantagens PRFIBER</span>
+          <h2 className="features__title">
+            Por que escolher a <span className="features__title--accent">PRFiber</span>?
+          </h2>
+          <p className="features__subtitle">
+            Internet de verdade com benefícios exclusivos para você. Veja o que torna a PRFIBER diferente das outras operadoras e por que nossos clientes nos escolhem para conectar suas vidas.
+          </p>
         </header>
 
         <div ref={gridRef} className={`features__grid${gridVisible ? ' visible' : ''}`}>

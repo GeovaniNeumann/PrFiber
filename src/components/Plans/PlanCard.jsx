@@ -3,7 +3,8 @@ import './Plans.css';
 
 export default function PlanCard({ plan }) {
   const isCustom = plan.isCustom;
-  const isFeatured = plan.tag === 'Mais Popular';
+  // Corrigido: verifica se o plano tem a tag "⭐ Mais Popular" (com a estrela)
+  const isFeatured = plan.tag === '⭐ Mais Popular';
   const cardRef = useRef(null);
 
   // Animate fiber bar when card enters viewport
@@ -31,26 +32,41 @@ export default function PlanCard({ plan }) {
     return () => observer.disconnect();
   }, [plan.speed, isCustom]);
 
+  // WhatsApp URL - NÚMERO DA PRFIBER
+  const WHATSAPP_URL = "https://wa.me/5541999976337?text=Olá!%20Gostaria%20de%20contratar%20o%20plano%20";
+
+  const getWhatsAppLink = () => {
+    if (isCustom) {
+      return `https://wa.me/5541999976337?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20plano%20${plan.name || plan.speed}%20da%20PRFIBER`;
+    }
+    return `${WHATSAPP_URL}${plan.speed}%20Mega%20da%20PRFIBER`;
+  };
+
   return (
     <article
       ref={cardRef}
       className={`plan-card${isFeatured ? ' plan-card--featured' : ''}`}
-      aria-label={`Plano ${plan.speed}${!isCustom ? ' MB/s' : ''}`}
+      aria-label={`Plano ${plan.name || plan.speed}${!isCustom ? ' Mega' : ''} - PRFIBER`}
     >
       {/* Badge */}
       {plan.tag && (
-        <div className="plan-card__badge" aria-label={`Tag: ${plan.tag}`}>
+        <div className="plan-card__badge" aria-label={`Destaque: ${plan.tag}`}>
           {plan.tag}
         </div>
       )}
 
       {/* Speed / Name */}
       <div className="plan-card__speed">
-        <span className="plan-card__speed-num">{plan.speed}</span>
-        {!isCustom && (
-          <span className="plan-card__speed-unit" aria-label="megabytes por segundo">
-            MB/s
-          </span>
+        {isCustom ? (
+          <>
+            <span className="plan-card__speed-num">{plan.speed}</span>
+            <span className="plan-card__speed-unit">{plan.name}</span>
+          </>
+        ) : (
+          <>
+            <span className="plan-card__speed-num">{plan.speed}</span>
+            <span className="plan-card__speed-unit">Mega</span>
+          </>
         )}
       </div>
 
@@ -62,7 +78,7 @@ export default function PlanCard({ plan }) {
           aria-valuenow={parseInt(plan.speed, 10)}
           aria-valuemin={0}
           aria-valuemax={700}
-          aria-label={`Velocidade: ${plan.speed} MB/s`}
+          aria-label={`Velocidade: ${plan.speed} Mega`}
         >
           <div className="plan-card__fiber-fill" />
         </div>
@@ -72,7 +88,7 @@ export default function PlanCard({ plan }) {
       {isCustom ? (
         <div className="plan-card__custom-pricing">
           <div className="plan-card__discount">
-            <div className="plan-card__discount-badge">Consultar</div>
+            <div className="plan-card__discount-badge">📞 Sob Consulta</div>
             <div className="plan-card__custom-price">{plan.discountPrice}</div>
             <p className="plan-card__custom-message">{plan.customMessage}</p>
           </div>
@@ -80,13 +96,13 @@ export default function PlanCard({ plan }) {
       ) : (
         <div className="plan-card__pricing">
           <div className="plan-card__full-price">
-            <span className="plan-card__full-label">Preço normal</span>
+            <span className="plan-card__full-label">Em atraso</span>
             <span className="plan-card__full-value" aria-label={`Preço normal ${plan.fullPrice}`}>
               {plan.fullPrice}
             </span>
           </div>
           <div className="plan-card__discount">
-            <div className="plan-card__discount-badge">Pagamento em dia</div>
+            <div className="plan-card__discount-badge">✅ Pagamento em dia</div>
             <div
               className="plan-card__discount-price"
               aria-label={`Preço com desconto ${plan.discountPrice}`}
@@ -100,26 +116,31 @@ export default function PlanCard({ plan }) {
 
       {/* Features */}
       <ul className="plan-card__features" aria-label="Benefícios inclusos">
-        <li>Fibra óptica dedicada</li>
-        <li>IP fixo disponível</li>
-        <li>Sem franquia de dados</li>
-        <li>{isCustom ? 'Suporte prioritário 24/7' : 'Suporte prioritário'}</li>
-        {isCustom && <li>SLA personalizado</li>}
+        {(plan.features || [
+          'Fibra óptica dedicada',
+          'Suporte e manutenção gratuitos',
+          'Sem franquia de dados',
+          'Atendimento prioritário',
+          'Sem burocracia',
+          'Sem consulta ao SPC'
+        ]).map((feature, idx) => (
+          <li key={idx}>{feature}</li>
+        ))}
       </ul>
 
       {/* CTA */}
       <a
-        href="https://wa.link/ugkrr3"
+        href={getWhatsAppLink()}
         target="_blank"
         rel="noopener noreferrer"
-        className={`btn btn--full${isFeatured ? ' btn--primary' : ' btn--outline'}`}
+        className={`btn btn--full ${isFeatured ? 'btn--primary' : 'btn--outline'}`}
         aria-label={
           isCustom
-            ? `Falar com consultor sobre o Plano ${plan.speed}`
-            : `Contratar o plano ${plan.speed} MB/s`
+            ? `Consultar preço do Plano ${plan.name || plan.speed} PRFIBER`
+            : `Contratar plano ${plan.speed} Mega PRFIBER`
         }
       >
-        {isCustom ? 'Falar com consultor' : 'Contratar agora'}
+        {isCustom ? 'Falar com especialista' : 'Contratar agora'}
       </a>
     </article>
   );

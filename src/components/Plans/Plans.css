@@ -1,98 +1,52 @@
 /* ============================================================
-   DESIGN TOKENS
+   Plans Component — PRFIBER Design System
    ============================================================ */
+
 :root {
-  /* Brand */
-  --color-brand-100: #eef5ff;
-  --color-brand-200: #d6e8ff;
-  --color-brand-400: #6097f5;
   --color-brand-600: #1a55c8;
   --color-brand-700: #1040a0;
   --color-brand-800: #0f1f3d;
-
-  /* Neutrals */
-  --color-neutral-100: #f8faff;
-  --color-neutral-200: #eef5ff;
-  --color-neutral-400: #6b7fa8;
-  --color-neutral-600: #3a4a6a;
-  --color-neutral-900: #0f1f3d;
-
-  /* Success */
-  --color-success-bg: #dcfce7;
-  --color-success-text: #15803d;
-  --color-success-border: #bbf7d0;
-
-  /* Featured */
-  --color-featured: #3472e8;
-
-  /* Shadows */
-  --shadow-card: 0 2px 12px rgba(16, 64, 160, 0.07);
-  --shadow-card-hover: 0 16px 40px rgba(26, 85, 200, 0.14);
-  --shadow-featured: 0 0 0 2px rgba(52, 114, 232, 0.25), 0 8px 30px rgba(16, 64, 160, 0.13);
-  --shadow-btn: 0 6px 20px rgba(26, 85, 200, 0.35);
-
-  /* Radii */
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-pill: 999px;
-
-  /* Transitions */
-  --transition-base: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-card: 0 4px 20px rgba(10, 22, 40, 0.07);
+  --shadow-card-hover: 0 14px 36px rgba(10, 22, 40, 0.12);
+  --shadow-featured: 0 8px 28px rgba(52, 114, 232, 0.22);
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-pill: 40px;
+  --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ============================================================
-   SECTION WRAPPER
-   ============================================================ */
 .plans {
-  padding: 96px 32px 112px;
-  background: linear-gradient(160deg, #eef5ff 0%, #ddeaff 55%, #cfe0ff 100%);
+  padding: 80px 32px 100px;
+  background: #e6ecf7;
   position: relative;
   overflow: hidden;
-  /* FIX: garante que os blobs decorativos não causem scroll lateral */
-  max-width: 100%;
-}
-
-/* Decorative blobs — clip-path garante que não vazam além dos limites da seção */
-.plans::before,
-.plans::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  /* FIX: clip evita vazamento em mobile */
-  clip-path: inset(0);
 }
 
 .plans::before {
-  width: 480px;
-  height: 480px;
-  background: radial-gradient(circle, rgba(52, 114, 232, 0.12) 0%, transparent 70%);
-  top: -120px;
-  right: -80px;
-  /* FIX: limita a borda direita para não vazar */
-  max-width: calc(50vw + 80px);
+  content: '';
+  position: absolute;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.07) 0%, transparent 70%);
+  top: -120px; right: -80px;
+  pointer-events: none;
 }
 
 .plans::after {
-  width: 360px;
-  height: 360px;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
-  bottom: -60px;
-  left: -60px;
+  content: '';
+  position: absolute;
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(26, 85, 200, 0.06) 0%, transparent 70%);
+  bottom: -60px; left: -60px;
+  pointer-events: none;
 }
 
 .plans__inner {
-  max-width: 1360px;
+  max-width: 1400px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
 }
 
-/* ============================================================
-   SECTION HEADER
-   ============================================================ */
 .plans__header {
   text-align: center;
   margin-bottom: 56px;
@@ -102,12 +56,12 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--color-brand-600);
-  background: rgba(26, 85, 200, 0.1);
+  color: #1a55c8;
+  background: rgba(26, 85, 200, 0.08);
   border: 1px solid rgba(26, 85, 200, 0.18);
   padding: 5px 14px;
   border-radius: var(--radius-pill);
@@ -115,197 +69,118 @@
 }
 
 .section-title {
-  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  font-size: clamp(1.9rem, 3.5vw, 2.6rem);
   font-weight: 800;
-  color: var(--color-brand-800);
+  color: #0f1f3d;
   margin-bottom: 14px;
-  line-height: 1.15;
+  line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
 .section-sub {
-  font-size: 1rem;
-  color: var(--color-neutral-400);
-  max-width: 560px;
+  font-size: 0.95rem;
+  color: #6b7fa8;
+  max-width: 540px;
   margin: 0 auto;
   line-height: 1.6;
 }
 
-/* ============================================================
-   GRID
-   ============================================================ */
 .plans__grid {
   display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
-  align-items: start;
-
-  /* Default: auto-fit, min 260px */
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: stretch;
 }
 
-/* Force 5 columns on very wide screens */
-@media (min-width: 1280px) {
-  .plans__grid {
-    grid-template-columns: repeat(5, 1fr);
-    align-items: stretch;
-  }
-}
-
-/* 3 columns on tablet-large */
-@media (min-width: 900px) and (max-width: 1279px) {
-  .plans__grid {
-    grid-template-columns: repeat(3, 1fr);
-    align-items: stretch;
-  }
-}
-
-/* 2 columns on tablet */
-@media (min-width: 600px) and (max-width: 899px) {
-  .plans__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* 1 column on mobile */
-@media (max-width: 599px) {
-  .plans {
-    padding: 64px 20px 80px;
-  }
-  .plans__grid {
-    grid-template-columns: 1fr;
-    max-width: 380px;
-    margin: 0 auto;
-    gap: 20px;
-  }
-  .plans__header {
-    margin-bottom: 40px;
-  }
-  /* Featured card: no scale on mobile */
-  .plan-card--featured {
-    transform: none !important;
-  }
-  .plan-card--featured:hover {
-    transform: translateY(-6px) !important;
-  }
-}
-
-/* ============================================================
-   PLAN CARD — BASE
-   ============================================================ */
+/* Plan Card */
 .plan-card {
   background: #ffffff;
   border-radius: var(--radius-lg);
-  padding: 26px 20px 22px;
-  border: 1.5px solid rgba(26, 85, 200, 0.1);
+  padding: 24px 18px 20px;
+  border: 1px solid rgba(26, 85, 200, 0.08);
   box-shadow: var(--shadow-card);
-  position: relative;
   transition: var(--transition-base);
   display: flex;
   flex-direction: column;
-  /* ensures equal height cards within grid row */
   height: 100%;
-  box-sizing: border-box;
+  position: relative;
 }
 
 .plan-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
   box-shadow: var(--shadow-card-hover);
-  border-color: rgba(26, 85, 200, 0.2);
+  border-color: rgba(26, 85, 200, 0.18);
 }
 
-/* ============================================================
-   PLAN CARD — FEATURED
-   ============================================================ */
 .plan-card--featured {
-  border-color: var(--color-featured);
+  border-top: 3px solid #3472e8;
+  background: linear-gradient(180deg, #fafcff 0%, #f0f6ff 100%);
   box-shadow: var(--shadow-featured);
-  transform: scale(1.025);
-  z-index: 2;
-  background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
 }
 
-.plan-card--featured:hover {
-  transform: scale(1.025) translateY(-5px);
-  box-shadow: 0 0 0 2px rgba(52, 114, 232, 0.3), 0 20px 50px rgba(16, 64, 160, 0.18);
-}
+.plan-card--featured:hover { transform: translateY(-8px); }
 
-/* ============================================================
-   BADGE (Mais Popular, etc.)
-   ============================================================ */
 .plan-card__badge {
   position: absolute;
-  top: -13px;
-  left: 50%;
+  top: -12px; left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(135deg, var(--color-brand-600), var(--color-featured));
+  background: linear-gradient(135deg, #1a55c8, #3472e8);
   color: #fff;
-  font-size: 0.62rem;
+  font-size: 0.58rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   padding: 4px 14px;
   border-radius: var(--radius-pill);
   white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(52, 114, 232, 0.35);
+  box-shadow: 0 4px 12px rgba(26, 85, 200, 0.3);
 }
 
-/* ============================================================
-   SPEED / TITLE AREA
-   ============================================================ */
 .plan-card__speed {
   display: flex;
   align-items: baseline;
   gap: 4px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .plan-card__speed-num {
-  font-size: clamp(2.4rem, 3vw, 3.2rem);
-  font-weight: 900;
-  color: var(--color-brand-800);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0f1f3d;
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
 }
 
 .plan-card__speed-unit {
-  font-size: 0.85rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  color: var(--color-brand-600);
-  letter-spacing: 0.02em;
+  color: #1a55c8;
 }
 
-/* ============================================================
-   FIBER PROGRESS BAR
-   ============================================================ */
 .plan-card__fiber-bar {
   height: 4px;
-  background: var(--color-brand-200);
+  background: #dce8ff;
   border-radius: var(--radius-pill);
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   overflow: hidden;
 }
 
 .plan-card__fiber-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--color-brand-600), #0ea5e9);
+  background: linear-gradient(90deg, #1a55c8, #0ea5e9);
   border-radius: var(--radius-pill);
   width: 0%;
-  transition: width 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+  transition: width 0.9s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Trigger animation when card is visible */
 .plan-card.is-visible .plan-card__fiber-fill {
   width: var(--fill-width, 0%);
 }
 
-/* ============================================================
-   PRICING BOX — STANDARD
-   ============================================================ */
 .plan-card__pricing {
-  background: var(--color-neutral-200);
-  border: 1px solid var(--color-brand-200);
+  background: #edf2ff;
   border-radius: var(--radius-md);
-  padding: 14px 12px;
+  padding: 12px 10px;
   margin-bottom: 18px;
 }
 
@@ -313,106 +188,66 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px dashed var(--color-brand-200);
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed rgba(26, 85, 200, 0.18);
 }
 
-.plan-card__full-label {
-  font-size: 0.68rem;
-  color: var(--color-neutral-400);
-  font-weight: 500;
-}
+.plan-card__full-label { font-size: 0.6rem; color: #6b7fa8; font-weight: 500; }
+.plan-card__full-value { font-size: 0.65rem; color: #94a3b8; text-decoration: line-through; }
 
-.plan-card__full-value {
-  font-size: 0.75rem;
-  color: var(--color-neutral-400);
-  text-decoration: line-through;
-}
-
-/* Discount block (shared by standard + custom) */
-.plan-card__discount {
-  text-align: center;
-}
+.plan-card__discount { text-align: center; }
 
 .plan-card__discount-badge {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background: var(--color-success-bg);
-  color: var(--color-success-text);
-  border: 1px solid var(--color-success-border);
-  font-size: 0.66rem;
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+  font-size: 0.55rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 3px 10px;
+  padding: 2px 8px;
   border-radius: var(--radius-pill);
   margin-bottom: 6px;
 }
 
-.plan-card__discount-badge::before {
-  content: '✓';
-  font-size: 0.6rem;
-}
-
 .plan-card__discount-price {
-  font-size: 1.85rem;
-  font-weight: 900;
-  color: var(--color-brand-700);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #1040a0;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 
-.plan-card__discount-label {
-  font-size: 0.68rem;
-  color: var(--color-neutral-400);
-  margin-top: 3px;
-}
+.plan-card__discount-label { font-size: 0.6rem; color: #6b7fa8; margin-top: 4px; }
 
-/* ============================================================
-   PRICING BOX — CUSTOM (Gamer / Corporativo)
-   ============================================================ */
 .plan-card__custom-pricing {
-  background: var(--color-neutral-200);
-  border: 1px solid var(--color-brand-200);
+  background: #edf2ff;
   border-radius: var(--radius-md);
-  padding: 16px 12px;
+  padding: 14px 10px;
   margin-bottom: 18px;
   text-align: center;
 }
 
 .plan-card__custom-pricing .plan-card__discount-badge {
-  background: rgba(26, 85, 200, 0.1);
-  color: var(--color-brand-600);
+  background: rgba(26, 85, 200, 0.08);
+  color: #1a55c8;
   border-color: rgba(26, 85, 200, 0.2);
 }
 
-.plan-card__custom-pricing .plan-card__discount-badge::before {
-  content: none;
-}
-
-.plan-card__custom-price {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--color-brand-700);
-  margin: 8px 0 6px;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-}
+.plan-card__custom-price { font-size: 0.95rem; font-weight: 700; color: #1a55c8; margin: 6px 0 4px; }
 
 .plan-card__custom-message {
-  font-size: 0.68rem;
-  color: var(--color-neutral-600);
-  background: rgba(26, 85, 200, 0.07);
-  padding: 5px 10px;
+  font-size: 0.6rem;
+  color: #3a4a6a;
+  background: rgba(26, 85, 200, 0.05);
+  padding: 4px 8px;
   border-radius: var(--radius-pill);
   display: inline-block;
   line-height: 1.4;
 }
 
-/* ============================================================
-   FEATURES LIST
-   ============================================================ */
 .plan-card__features {
   list-style: none;
   padding: 0;
@@ -424,107 +259,78 @@
 }
 
 .plan-card__features li {
-  font-size: 0.78rem;
-  color: var(--color-neutral-600);
+  font-size: 0.7rem;
+  color: #3a4a6a;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   line-height: 1.4;
 }
 
 .plan-card__features li::before {
   content: '';
   display: inline-block;
-  width: 16px;
-  height: 16px;
-  min-width: 16px;
-  border-radius: 50%;
-  background: rgba(26, 85, 200, 0.1);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8' viewBox='0 0 10 8'%3E%3Cpath d='M1 4l2.5 2.5L9 1' stroke='%231a55c8' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  width: 13px; height: 13px;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8' viewBox='0 0 10 8'%3E%3Cpath d='M1 4l2.5 2.5L9 1' stroke='%231a55c8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
 }
 
-/* ============================================================
-   BUTTONS
-   ============================================================ */
+/* BOTÕES AZUIS - CORRIGIDOS */
 .btn--full {
   display: block;
   width: 100%;
-  box-sizing: border-box;
   text-align: center;
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.82rem;
-  letter-spacing: 0.02em;
-  padding: 11px 16px;
+  font-size: 0.72rem;
+  padding: 11px 12px;
   border-radius: var(--radius-pill);
   transition: var(--transition-base);
-  margin-top: auto;
   cursor: pointer;
   border: none;
-  outline: none;
-}
-
-.btn--full:focus-visible {
-  outline: 2px solid var(--color-brand-600);
-  outline-offset: 3px;
 }
 
 .btn--outline {
   background: transparent;
-  border: 1.5px solid var(--color-brand-600);
-  color: var(--color-brand-600);
+  border: 1.5px solid #1a55c8;
+  color: #1a55c8;
 }
 
 .btn--outline:hover {
-  background: var(--color-brand-600);
-  color: #fff;
-  box-shadow: 0 4px 14px rgba(26, 85, 200, 0.25);
+  background: #1a55c8;
+  border-color: #1a55c8;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(26, 85, 200, 0.3);
 }
 
 .btn--primary {
-  background: linear-gradient(135deg, var(--color-brand-600) 0%, var(--color-featured) 100%);
-  color: #fff;
+  background: linear-gradient(135deg, #1a55c8, #3472e8);
+  border: none;
+  color: white;
   box-shadow: 0 4px 14px rgba(26, 85, 200, 0.3);
 }
 
 .btn--primary:hover {
+  background: linear-gradient(135deg, #1040a0, #1a55c8);
+  box-shadow: 0 6px 18px rgba(26, 85, 200, 0.35);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-btn);
-  filter: brightness(1.05);
+  color: white;
 }
 
-/* ============================================================
-   COMPACT MODE — 5 cards wide
-   ============================================================ */
-@media (min-width: 1280px) {
-  .plan-card {
-    padding: 22px 16px 18px;
-  }
-  .plan-card__speed-num {
-    font-size: 2.6rem;
-  }
-  .plan-card__pricing,
-  .plan-card__custom-pricing {
-    padding: 12px 10px;
-    margin-bottom: 14px;
-  }
-  .plan-card__discount-price {
-    font-size: 1.55rem;
-  }
-  .plan-card__custom-price {
-    font-size: 1rem;
-  }
-  .plan-card__features {
-    gap: 6px;
-    margin-bottom: 14px;
-  }
-  .plan-card__features li {
-    font-size: 0.72rem;
-  }
-  .btn--full {
-    font-size: 0.75rem;
-    padding: 9px 12px;
-  }
+@media (max-width: 1280px) { .plans__grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 1024px) { .plans__grid { grid-template-columns: repeat(3, 1fr); } }
+
+@media (max-width: 768px) {
+  .plans { padding: 60px 20px 80px; }
+  .plans__grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .plan-card { padding: 22px 16px 18px; }
+  .plan-card__speed-num { font-size: 1.9rem; }
+  .plan-card__discount-price { font-size: 1.4rem; }
+}
+
+@media (max-width: 520px) {
+  .plans__grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
 }

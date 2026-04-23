@@ -1,7 +1,7 @@
 /* Footer Component Styles */
 
 .footer {
-  background: #0a0a0f;
+  background: #09111b;
   color: rgba(255, 255, 255, 0.7);
   padding: 80px 32px 0;
   position: relative;
@@ -38,7 +38,6 @@
 .footer__logo {
   display: block;
   width: fit-content;
-  /* Fallback para browsers sem fit-content */
   width: -moz-fit-content;
   margin-bottom: 8px;
 }
@@ -46,7 +45,7 @@
 .footer__logo-img {
   height: 50px;
   width: auto;
-  display: block; /* Necessário para transform funcionar corretamente */
+  display: block;
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
@@ -69,9 +68,8 @@
   background: rgba(255, 255, 255, 0.05);
   padding: 10px 16px;
   border-radius: 12px;
-  /* fit-content com fallback */
-  width: -moz-fit-content;
   width: fit-content;
+  width: -moz-fit-content;
   margin-top: 8px;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -120,7 +118,7 @@
   gap: 12px;
 }
 
-/* ── LINKS E BOTÕES — seletor unificado via classe ── */
+/* ── LINKS E BOTÕES ── */
 .footer__col ul a,
 .footer-link {
   font-size: 0.88rem;
@@ -156,7 +154,6 @@
   width: 15px;
   height: 15px;
   flex-shrink: 0;
-  stroke: #6097f5;
   transition: stroke 0.25s ease;
 }
 
@@ -240,6 +237,52 @@
     gap: 32px;
   }
 
+  /* CENTRALIZAR TUDO NO MOBILE */
+  .footer__brand {
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer__logo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer__tagline {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer__anatel {
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer__col {
+    text-align: center;
+  }
+
+  .footer__col h4 {
+    display: inline-block;
+  }
+
+  .footer__col h4::after {
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+  }
+
+  .footer__col ul {
+    align-items: center;
+  }
+
+  .footer__col ul a,
+  .footer-link {
+    justify-content: center;
+  }
+
   .footer__bottom {
     flex-direction: column;
     text-align: center;
@@ -247,12 +290,6 @@
   }
 
   .footer__dev {
-    justify-content: center;
-  }
-
-  .footer__anatel {
-    width: 100%;
-    -moz-width: 100%;
     justify-content: center;
   }
 }
@@ -270,5 +307,9 @@
     flex-direction: column;
     text-align: center;
     gap: 8px;
+  }
+
+  .footer__tagline {
+    font-size: 0.82rem;
   }
 }

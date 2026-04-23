@@ -1,43 +1,62 @@
 import './Partners.css';
 import { useState, useEffect, useRef, useCallback } from 'react';
 
-import img1 from '../../assets/carrossel/imagem1.png';
-import img2 from '../../assets/carrossel/imagem2.png';
-import img3 from '../../assets/carrossel/imagem3.png';
-import img4 from '../../assets/carrossel/imagem4.png';
-import img5 from '../../assets/carrossel/imagem5.png';
-import img6 from '../../assets/carrossel/imagem6.png';
-import img7 from '../../assets/carrossel/imagem7.png';
-
-
-const partners = [
-  { id: 1, src: img1, alt: 'Parceiro 1' },
-  { id: 2, src: img2, alt: 'Parceiro 2' },
-  { id: 3, src: img3, alt: 'Parceiro 3' },
-  { id: 4, src: img4, alt: 'Parceiro 4' },
-  { id: 5, src: img5, alt: 'Parceiro 5' },
-  { id: 6, src: img6, alt: 'Parceiro 6' },
-  { id: 7, src: img7, alt: 'Parceiro 7' },
+const testimonials = [
+  {
+    id: 1,
+    name: 'Carlos Silva',
+    text: 'Internet excelente, nunca mais tive dor de cabeça! O atendimento é rápido e resolve na hora.',
+    rating: 5,
+    location: 'Pinhais - PR',
+  },
+  {
+    id: 2,
+    name: 'Mariana Oliveira',
+    text: 'Atendimento rápido de verdade! Saí da operadora antiga e não me arrependo. Fibra estável e sem quedas.',
+    rating: 5,
+    location: 'Pinhais - PR',
+  },
+  {
+    id: 3,
+    name: 'Rafael Souza',
+    text: 'Melhor internet da região! Como gamer, a latência baixa fez toda diferença. Recomendo demais a PRFIBER.',
+    rating: 5,
+    location: 'Piraquara - PR',
+  },
+  {
+    id: 4,
+    name: 'Fernanda Lima',
+    text: 'Atendimento humano como não vejo em lugar nenhum. Resolveram meu problema em minutos. Nota 10!',
+    rating: 5,
+    location: 'Pinhais - PR',
+  },
+  {
+    id: 5,
+    name: 'Ricardo Mendes',
+    text: 'Instalação rápida e suporte de qualidade. Minha empresa agora tem internet estável e confiável.',
+    rating: 5,
+    location: 'Piraquara - PR',
+  },
 ];
 
 export default function Partners() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(4);
+  const [itemsPerView, setItemsPerView] = useState(3);
   const [paused, setPaused] = useState(false);
   const intervalRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 600) setItemsPerView(2);
-      else if (window.innerWidth < 1024) setItemsPerView(3);
-      else setItemsPerView(4);
+      if (window.innerWidth < 600) setItemsPerView(1);
+      else if (window.innerWidth < 1024) setItemsPerView(2);
+      else setItemsPerView(3);
     };
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const maxIndex = partners.length - itemsPerView;
+  const maxIndex = testimonials.length - itemsPerView;
 
   const next = useCallback(() => {
     setCurrentIndex((i) => (i >= maxIndex ? 0 : i + 1));
@@ -45,28 +64,31 @@ export default function Partners() {
 
   useEffect(() => {
     if (paused) return;
-    intervalRef.current = setInterval(next, 3500);
+    intervalRef.current = setInterval(next, 5000);
     return () => clearInterval(intervalRef.current);
   }, [next, paused]);
 
   const goTo = (i) => {
     setCurrentIndex(i);
     clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(next, 3500);
+    intervalRef.current = setInterval(next, 5000);
   };
 
   const slideWidth = 100 / itemsPerView;
   const gap = 24;
 
   return (
-    <section className="partners" id="parceiros">
+    <section className="partners" id="depoimentos">
       <div className="partners__container">
         <div className="partners__header">
-          <span className="partners__badge">PARCEIROS</span>
+          <span className="partners__badge">Prova Social</span>
           <h2 className="partners__title">
-            Nossos <span className="partners__title--accent">Parceiros</span>
+            Quem usa,{' '}
+            <span className="partners__title--accent">recomenda</span>
           </h2>
-          <p className="partners__subtitle">Empresas que confiam e colaboram com a PR Fiber</p>
+          <p className="partners__subtitle">
+            Veja o que nossos clientes estão dizendo sobre a PRFIBER
+          </p>
         </div>
 
         <div
@@ -78,17 +100,30 @@ export default function Partners() {
             <div
               className="partners__slides"
               style={{
-                transform: `translateX(calc(-${currentIndex * slideWidth}% - ${currentIndex * gap / itemsPerView}px))`,
+                transform: `translateX(calc(-${currentIndex * slideWidth}% - ${(currentIndex * gap) / itemsPerView}px))`,
               }}
             >
-              {partners.map((partner) => (
+              {testimonials.map((testimonial) => (
                 <div
-                  key={partner.id}
+                  key={testimonial.id}
                   className="partners__slide"
-                  style={{ flex: `0 0 calc(${slideWidth}% - ${gap * (itemsPerView - 1) / itemsPerView}px)` }}
+                  style={{
+                    flex: `0 0 calc(${slideWidth}% - ${(gap * (itemsPerView - 1)) / itemsPerView}px)`,
+                  }}
                 >
-                  <div className="partner-card">
-                    <img src={partner.src} alt={partner.alt} loading="lazy" />
+                  <div className="testimonial-card">
+                    <div
+                      className="testimonial-card__stars"
+                      aria-label={`${testimonial.rating} de 5 estrelas`}
+                    >
+                      {'★'.repeat(testimonial.rating)}
+                      {'☆'.repeat(5 - testimonial.rating)}
+                    </div>
+                    <p className="testimonial-card__text">"{testimonial.text}"</p>
+                    <div className="testimonial-card__author">
+                      <strong>{testimonial.name}</strong>
+                      <span>{testimonial.location}</span>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -96,13 +131,15 @@ export default function Partners() {
           </div>
         </div>
 
-        <div className="partners__dots">
+        <div className="partners__dots" role="tablist" aria-label="Navegar depoimentos">
           {Array.from({ length: maxIndex + 1 }).map((_, i) => (
             <button
               key={i}
               className={`partners__dot${currentIndex === i ? ' active' : ''}`}
               onClick={() => goTo(i)}
-              aria-label={`Slide ${i + 1}`}
+              aria-label={`Depoimento ${i + 1}`}
+              role="tab"
+              aria-selected={currentIndex === i}
             />
           ))}
         </div>

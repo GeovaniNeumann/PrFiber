@@ -30,7 +30,7 @@ export default function WhatsappButton() {
       
       {/* Tooltip */}
       <div className="whatsapp-button__tooltip">
-        <span>💬 Fale conosco!</span>
+        <span>Fale conosco!</span>
         <span className="tooltip-arrow"></span>
       </div>
     </a>

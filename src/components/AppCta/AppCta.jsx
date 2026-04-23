@@ -1,24 +1,11 @@
 import './AppCta.css';
+import imgapp from '../../assets/imgapp.png'; // IMPORTANDO A IMAGEM
 
 const BAR_HEIGHTS = [65, 80, 95, 100, 88, 72, 55];
 
 export default function AppCta() {
   return (
     <section className="app-cta" aria-labelledby="app-cta-title">
-      {/* Decorativos — ocultos de screen readers */}
-      <div className="app-cta__bg-particles" aria-hidden="true">
-        <div className="particle" />
-        <div className="particle" />
-        <div className="particle" />
-        <div className="particle" />
-        <div className="particle" />
-      </div>
-
-      {/* CORREÇÃO: glow sem modificador duplicava o seletor.
-          Agora ambos usam modificadores --1 e --2 explícitos. */}
-      <div className="app-cta__glow app-cta__glow--1" aria-hidden="true" />
-      <div className="app-cta__glow app-cta__glow--2" aria-hidden="true" />
-
       <div className="app-cta__inner">
         {/* ── TEXTO ── */}
         <div className="app-cta__text">
@@ -41,7 +28,6 @@ export default function AppCta() {
             de forma rápida e segura.
           </p>
 
-          {/* CORREÇÃO: feature-items eram <div> — semanticamente lista de benefícios */}
           <ul className="app-cta__features" aria-label="Funcionalidades do app">
             <li className="feature-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -64,7 +50,6 @@ export default function AppCta() {
             </li>
           </ul>
 
-          {/* CORREÇÃO: store buttons sem aria-label descritivo */}
           <div className="app-cta__buttons">
             <a
               href="https://apps.apple.com/br/app/app-provedor/id1564606498"
@@ -99,76 +84,6 @@ export default function AppCta() {
             </a>
           </div>
         </div>
-
-        {/* ── PHONE MOCKUP
-            CORREÇÃO: aria-hidden="true" no bloco inteiro — é decorativo,
-            screen readers não devem ler "487MB/s Online Excelente" como conteúdo real ── */}
-        <div className="app-cta__mockup" aria-hidden="true">
-          <div className="phone-frame">
-            <div className="phone-screen">
-              <div className="phone-ui">
-                <div className="phone-ui__header">
-                  <span className="status-dot" />
-                  PR Fiber
-                </div>
-
-                <div className="phone-ui__welcome">
-                  <span className="phone-ui__welcome-sub">Olá, usuário</span>
-                  <span className="phone-ui__welcome-name">Bem-vindo de volta!</span>
-                </div>
-
-                <div className="phone-ui__speed">
-                  <div className="phone-ui__speed-label">Velocidade atual</div>
-                  <div className="phone-ui__speed-value">
-                    487<span className="phone-ui__speed-unit">MB/s</span>
-                  </div>
-                </div>
-
-                <div className="phone-ui__bars">
-                  {BAR_HEIGHTS.map((h, i) => (
-                    <div
-                      key={i}
-                      className="phone-ui__bar"
-                      style={{ height: `${h}%` }}
-                    >
-                      <div className="bar-glow" />
-                    </div>
-                  ))}
-                </div>
-
-                <div className="phone-ui__status">
-                  {/* CORREÇÃO: emoji 🟢 substituído por SVG — evita leitura
-                      "círculo verde" por screen readers e é mais performático */}
-                  <span className="status-icon-svg" />
-                  Online — Excelente
-                </div>
-
-                <nav className="phone-ui__menu">
-                  <div className="menu-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2h-5v-8H7v8H5a2 2 0 0 1-2-2z"/>
-                    </svg>
-                    <span className="menu-item__label">Início</span>
-                  </div>
-                  <div className="menu-item active">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                      <circle cx="12" cy="7" r="4"/>
-                    </svg>
-                    <span className="menu-item__label">Conta</span>
-                  </div>
-                  <div className="menu-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M12 2a10 10 0 1 0 10 10"/>
-                      <path d="M12 6v6l4 2"/>
-                    </svg>
-                    <span className="menu-item__label">Suporte</span>
-                  </div>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>  
       </div>
     </section>
   );

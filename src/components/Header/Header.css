@@ -1,4 +1,4 @@
-/* Header Component Styles */
+/* Header Component Styles - PRFIBER */
 
 .header {
   position: fixed;
@@ -110,15 +110,14 @@
   transform: translateY(-1px);
 }
 
-/* ── CTA DESKTOP ── */
+/* ── CTA DESKTOP - Botão Contratar Agora (WhatsApp) ── */
 .header__inner .btn--outline {
   padding: 8px 24px;
   border-radius: 40px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.85rem;
-  border: 1.5px solid rgba(255, 255, 255, 0.7);
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(5px);
+  background: linear-gradient(135deg, #25a55c, #1e8c4a);
+  border: none;
   color: white;
   transition: all 0.3s ease;
   white-space: nowrap;
@@ -127,24 +126,28 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(37, 165, 92, 0.3);
 }
 
 .header__inner .btn--outline:hover {
-  background: linear-gradient(135deg, #0ea5e9, #1a55c8);
-  border-color: transparent;
+  background: linear-gradient(135deg, #1e8c4a, #166b38);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
+  box-shadow: 0 8px 20px rgba(37, 165, 92, 0.4);
 }
 
+/* Estado quando o header está scrolled */
 .header.scrolled .header__inner .btn--outline {
-  background: rgba(4, 13, 31, 0.8);
-  border-color: #0ea5e9;
-  color: #0ea5e9;
+  background: linear-gradient(135deg, #25a55c, #1e8c4a);
+  border: none;
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 165, 92, 0.3);
 }
 
 .header.scrolled .header__inner .btn--outline:hover {
-  background: linear-gradient(135deg, #0ea5e9, #1a55c8);
-  color: white;
+  background: linear-gradient(135deg, #1e8c4a, #166b38);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 165, 92, 0.4);
 }
 
 /* ── HAMBURGER ── */
@@ -185,7 +188,7 @@
 .hamburger.open span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* CTA mobile oculto por padrão */
+/* CTA mobile */
 .mobile-cta {
   display: none;
 }
@@ -213,10 +216,7 @@
     display: none;
   }
 
-  /* Nav mobile — aberto
-     CORREÇÃO: background-image com asset via CSS não é processado pelo Vite.
-     O fundo escuro puro é mais confiável e leve. A imagem de background
-     deve ser passada via inline style no JSX se necessário. */
+  /* Nav mobile — aberto */
   .header__nav.open {
     display: flex;
     flex-direction: column;
@@ -224,10 +224,8 @@
     top: 0;
     left: 0;
     width: 100%;
-    /* dvh para suporte correto no Safari iOS sem barra de endereço */
     height: 100dvh;
     background-color: #040d1f;
-    /* Gradiente sutil sem depender de asset externo no CSS */
     background-image: linear-gradient(
       160deg,
       rgba(4, 13, 31, 1) 0%,
@@ -238,7 +236,6 @@
     gap: 12px;
     z-index: 1000;
     overflow-y: auto;
-    /* Evita scroll inercial preso no iOS */
     -webkit-overflow-scrolling: touch;
     animation: fadeIn 0.3s ease forwards;
   }
@@ -265,22 +262,29 @@
 
   .header__nav.open .nav-link::before { display: none; }
 
+  /* CTA mobile - WhatsApp */
   .header__nav.open .mobile-cta {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
     margin-top: 20px;
     padding: 16px;
     border-radius: 12px;
-    background: linear-gradient(135deg, #0ea5e9, #1a55c8);
+    background: linear-gradient(135deg, #25a55c, #1e8c4a);
     color: white;
     font-weight: 700;
     font-size: 1rem;
     text-decoration: none;
-    box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
+    box-shadow: 0 10px 20px rgba(37, 165, 92, 0.3);
     opacity: 0;
     animation: slideUpIn 0.4s ease forwards;
     animation-delay: 0.35s;
+  }
+  
+  .header__nav.open .mobile-cta:hover {
+    background: linear-gradient(135deg, #1e8c4a, #166b38);
+    transform: translateY(-2px);
   }
 }
 
@@ -289,6 +293,7 @@
   .header__logo-img { height: 32px; }
 }
 
+/* ── ANIMAÇÕES ── */
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }

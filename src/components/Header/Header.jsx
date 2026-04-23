@@ -6,14 +6,17 @@ const scrollTo = (id) => {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 };
 
-// Labels explícitos com acentuação correta — não derivar de IDs de seção
+// Labels atualizados conforme plano PRFIBER
 const NAV_ITEMS = [
   { id: 'inicio',    label: 'Início'    },
-  { id: 'empresa',   label: 'Empresa'   },
+  { id: 'sobre',     label: 'Sobre'     },
   { id: 'planos',    label: 'Planos'    },
   { id: 'vantagens', label: 'Vantagens' },
   { id: 'contato',   label: 'Contato'   },
 ];
+
+// URL do WhatsApp - ALTERE PARA O NÚMERO CORRETO DA PRFIBER
+const WHATSAPP_URL = "https://wa.me/5541999976337?text=Olá!%20Gostaria%20de%20contratar%20a%20PRFIBER";
 
 export default function Header() {
   const [scrolled, setScrolled]   = useState(false);
@@ -27,8 +30,6 @@ export default function Header() {
   }, []);
 
   // Trava de scroll do body quando menu está aberto
-  // CORREÇÃO: remover `body.style.height` — desnecessário e causa layout shift.
-  // `overflow: hidden` sozinho já impede o scroll.
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
@@ -73,10 +74,10 @@ export default function Header() {
     >
       <div className="header__inner">
         {/* Logo */}
-        <a className="header__logo" href="#inicio" aria-label="Ir para o início — PR Fiber">
+        <a className="header__logo" href="#inicio" aria-label="Ir para o início — PRFIBER">
           <img
             src={headerLogo}
-            alt="PR Fiber"
+            alt="PRFIBER"
             className="header__logo-img"
             loading="eager"
             fetchpriority="high"
@@ -100,27 +101,27 @@ export default function Header() {
             </button>
           ))}
 
-          {/* CTA visível apenas no menu mobile */}
+          {/* CTA visível apenas no menu mobile - WhatsApp */}
           <a
-            href="http://i9fibras.ispfycloud.com.br/"
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="mobile-cta"
             onClick={() => setMenuOpen(false)}
           >
-            Área do Cliente
+            Contratar Agora
           </a>
         </nav>
 
-        {/* CTA Desktop */}
+        {/* CTA Desktop - WhatsApp */}
         <a
-          href="http://i9fibras.ispfycloud.com.br/"
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn--outline desktop-only"
-          aria-label="Acessar Área do Cliente"
+          aria-label="Contratar PRFIBER pelo WhatsApp"
         >
-          Área do Cliente
+           Contratar Agora
         </a>
 
         {/* Hamburger */}
