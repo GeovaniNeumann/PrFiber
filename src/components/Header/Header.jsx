@@ -1,7 +1,7 @@
 import './Header.css';
 import headerLogo from '../../assets/imgheader.png';
 import menuMobileBg from '../../assets/imgmenumobile.png';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const scrollTo = (id) => {
   const element = document.getElementById(id);
@@ -32,6 +32,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const scrollYRef = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -39,14 +40,37 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Bloqueio de scroll simplificado e mais robusto
+  // Bloqueio de scroll robusto: salva posição e trava o body
   useEffect(() => {
     if (menuOpen && !isClosing) {
+      // Salva a posição atual do scroll
+      scrollYRef.current = window.scrollY;
+
+      // Trava o body na posição atual
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollYRef.current}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
       document.body.style.overflow = 'hidden';
     } else {
+      // Restaura o body e volta para a posição salva
+      const savedY = scrollYRef.current;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
       document.body.style.overflow = '';
+
+      if (savedY > 0) {
+        window.scrollTo(0, savedY);
+      }
     }
+
     return () => {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
       document.body.style.overflow = '';
     };
   }, [menuOpen, isClosing]);
@@ -65,26 +89,26 @@ export default function Header() {
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === 'Escape' && menuOpen) {
-        setIsClosing(true);
-        setTimeout(() => {
-          setMenuOpen(false);
-          setIsClosing(false);
-        }, 300);
+        closeMenu();
       }
     };
     document.addEventListener('keydown', handleKey);
     return () => document.removeEventListener('keydown', handleKey);
   }, [menuOpen]);
 
-  const handleNavClick = (id) => {
-    // Inicia a animação de fechamento suave
+  const closeMenu = () => {
     setIsClosing(true);
-    
-    // Aguarda a animação de fade-out antes de fechar completamente
     setTimeout(() => {
       setMenuOpen(false);
       setIsClosing(false);
-      // Scroll suave para a seção
+    }, 300);
+  };
+
+  const handleNavClick = (id) => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setMenuOpen(false);
+      setIsClosing(false);
       scrollTo(id);
     }, 300);
   };
@@ -100,9 +124,9 @@ export default function Header() {
     >
       <div className="header__inner">
         {/* Logo */}
-        <a 
-          className="header__logo" 
-          href="#inicio" 
+        <a
+          className="header__logo"
+          href="#inicio"
           aria-label="Ir para o início — PRFIBER"
           onClick={(e) => {
             e.preventDefault();
@@ -143,13 +167,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               className="mobile-cta"
-              onClick={() => {
-                setIsClosing(true);
-                setTimeout(() => {
-                  setMenuOpen(false);
-                  setIsClosing(false);
-                }, 300);
-              }}
+              onClick={closeMenu}
             >
               Contratar Agora
             </a>
@@ -176,11 +194,7 @@ export default function Header() {
           aria-controls="main-nav"
           onClick={() => {
             if (menuOpen) {
-              setIsClosing(true);
-              setTimeout(() => {
-                setMenuOpen(false);
-                setIsClosing(false);
-              }, 300);
+              closeMenu();
             } else {
               setMenuOpen(true);
             }
