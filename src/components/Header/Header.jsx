@@ -3,17 +3,17 @@ import headerLogo from '../../assets/imgheader.png';
 import menuMobileBg from '../../assets/imgmenumobile.png';
 import { useEffect, useState, useRef } from 'react';
 
-const scrollTo = (id) => {
+const getElementTop = (id) => {
   const element = document.getElementById(id);
-  if (element) {
-    const headerOffset = 80;
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  if (!element) return null;
+  // element.offsetTop é relativo ao documento, não depende do estado do body
+  return element.offsetTop - 80;
+};
 
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: 'smooth'
-    });
+const scrollTo = (id) => {
+  const top = getElementTop(id);
+  if (top !== null) {
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
   }
 };
 
@@ -105,11 +105,20 @@ export default function Header() {
   };
 
   const handleNavClick = (id) => {
+    // Calcula a posição do destino ANTES de soltar o body fixado
+    // offsetTop é relativo ao documento e não muda com position:fixed
+    const targetTop = getElementTop(id);
+
     setIsClosing(true);
     setTimeout(() => {
       setMenuOpen(false);
       setIsClosing(false);
-      scrollTo(id);
+      // Aguarda um frame para o body ser restaurado, depois scrolla
+      requestAnimationFrame(() => {
+        if (targetTop !== null) {
+          window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+        }
+      });
     }, 300);
   };
 

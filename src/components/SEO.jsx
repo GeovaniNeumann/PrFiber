@@ -39,7 +39,7 @@ export default function SEO({
       <meta name="robots" content="index, follow" />
       <link rel="canonical" href={siteUrl} />
       
-      <meta name="theme-color" content="#0066CC" />
+
     </Helmet>
   );
 }
