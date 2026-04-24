@@ -1,4 +1,4 @@
-  /* ============================================================
+/* ============================================================
     PR FIBER — Global Styles
     ============================================================ */
 
@@ -12,6 +12,14 @@
     font-size: 16px;
     /* FIX: overflow-x precisa estar no html E no body para funcionar */
     overflow-x: hidden;
+  }
+
+  /* Aumenta base de leitura em mobile */
+  @media (max-width: 768px) {
+    html { font-size: 17px; }
+  }
+  @media (max-width: 480px) {
+    html { font-size: 17.5px; }
   }
 
   body {
@@ -95,7 +103,7 @@
     padding: 13px 28px;
     border-radius: 50px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     text-decoration: none;
@@ -152,14 +160,14 @@
   @media (max-width: 480px) {
     .btn--lg {
       padding: 14px 28px;
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
   }
 
   /* ── TIPOGRAFIA DE SEÇÃO ── */
   .section-eyebrow {
     display: inline-block;
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -173,7 +181,7 @@
   }
 
   .section-title {
-    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    font-size: clamp(1.75rem, 4vw, 2.6rem);
     font-weight: 700;
     font-family: 'Sora', 'DM Sans', sans-serif;
     color: var(--text-dark);
@@ -183,7 +191,7 @@
 
   .section-sub {
     color: var(--text-mid);
-    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-size: clamp(1rem, 2vw, 1.05rem);
     margin-top: 12px;
     max-width: 520px;
     font-family: 'DM Sans', sans-serif;
