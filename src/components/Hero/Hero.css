@@ -104,7 +104,7 @@
   position: relative;
   z-index: 10;
   text-align: left;
-  max-width: 600px;
+  max-width: 700px;
   margin-left: 8vw;
   margin-right: auto;
   opacity: 0;
@@ -165,11 +165,12 @@
   margin-bottom: 40px;
 }
 
+/* Botão Ver Planos */
 .hero__actions .btn--primary {
   background: linear-gradient(135deg, #0ea5e9, #1a55c8);
   border: none;
   color: white;
-  padding: 14px 32px;
+  padding: 14px 14px;
   border-radius: 40px;
   font-weight: 600;
   font-size: 1rem;
@@ -187,11 +188,12 @@
   box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
 }
 
-.hero__actions .btn--ghost {
-  background: transparent;
-  border: 1.5px solid white;
+/* Botão WhatsApp/Contratar Agora */
+.hero__actions .btn--whatsapp {
+  background: linear-gradient(135deg, #25a55c, #1e8c4a);
+  border: none;
   color: white;
-  padding: 14px 32px;
+  padding: 14px 14px;
   border-radius: 40px;
   font-weight: 600;
   font-size: 1rem;
@@ -201,18 +203,44 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  box-shadow: 0 4px 12px rgba(37, 165, 92, 0.3);
 }
 
-.hero__actions .btn--ghost:hover {
-  background: linear-gradient(135deg, #25a55c, #1e8c4a);
-  border-color: transparent;
-  color: white;
+.hero__actions .btn--whatsapp:hover {
+  background: linear-gradient(135deg, #1e8c4a, #166b38);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(37, 165, 92, 0.4);
 }
 
-.hero__actions .btn--ghost svg {
-  fill: white;
+/* Botão Área do Cliente */
+.hero__actions .btn--cliente {
+  background: linear-gradient(135deg, #c5952e, #ccae27);
+  border: 1.5px solid rgba(228, 168, 39, 0.822);
+  color: white;
+  padding: 14px 14px;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(197, 149, 46, 0.3);
+}
+
+.hero__actions .btn--cliente:hover {
+  background: linear-gradient(135deg, #ccae27, #c5952e);
+  border-color: #e4a827;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(197, 149, 46, 0.4);
+}
+
+.hero__actions .btn--cliente:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(197, 149, 46, 0.3);
 }
 
 .hero__trust {
@@ -288,8 +316,8 @@
     transform: translateY(20px);
     display: flex;
     flex-direction: column;
-    /* Removido min-height: 400px que causava saltos de layout */
     justify-content: flex-end;
+    align-items: center; /* ADICIONADO: centraliza os botões */
   }
 
   .hero__content.visible { transform: translateY(0); }
@@ -301,17 +329,20 @@
 
   .hero__actions {
     flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
+    align-items: center; /* ALTERADO: de 'stretch' para 'center' */
+    gap: 12px; /* AUMENTADO: um pouco mais de espaço entre botões */
     margin-bottom: 20px;
   }
 
   .hero__actions .btn--primary,
-  .hero__actions .btn--ghost {
-    width: 100%;
-    padding: 14px 24px;
-    font-size: 0.95rem;
-    border-radius: 12px;
+  .hero__actions .btn--whatsapp,
+  .hero__actions .btn--cliente {
+    width: auto;
+    min-width: 200px; /* ADICIONADO: largura mínima consistente */
+    max-width: 260px; /* ADICIONADO: largura máxima para não ficar muito largo */
+    padding: 10px 20px; /* REDUZIDO: padding menor para botões mais compactos */
+    font-size: 0.9rem; /* REDUZIDO: fonte um pouco menor */
+    border-radius: 40px; /* ALTERADO: mais arredondado como no desktop */
     justify-content: center;
   }
 

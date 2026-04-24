@@ -6,7 +6,6 @@ import { useEffect, useState, useRef } from 'react';
 const getElementTop = (id) => {
   const element = document.getElementById(id);
   if (!element) return null;
-  // element.offsetTop é relativo ao documento, não depende do estado do body
   return element.offsetTop - 80;
 };
 
@@ -27,6 +26,7 @@ const NAV_ITEMS = [
 ];
 
 const WHATSAPP_URL = "https://wa.me/5541999976337?text=Olá!%20Gostaria%20de%20contratar%20a%20PRFIBER";
+const CLIENTE_URL  = "http://i9fibras.ispfycloud.com.br/";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -40,27 +40,21 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Bloqueio de scroll robusto: salva posição e trava o body
   useEffect(() => {
     if (menuOpen && !isClosing) {
-      // Salva a posição atual do scroll
       scrollYRef.current = window.scrollY;
-
-      // Trava o body na posição atual
       document.body.style.position = 'fixed';
       document.body.style.top = `-${scrollYRef.current}px`;
       document.body.style.left = '0';
       document.body.style.right = '0';
       document.body.style.overflow = 'hidden';
     } else {
-      // Restaura o body e volta para a posição salva
       const savedY = scrollYRef.current;
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.left = '';
       document.body.style.right = '';
       document.body.style.overflow = '';
-
       if (savedY > 0) {
         window.scrollTo(0, savedY);
       }
@@ -105,15 +99,11 @@ export default function Header() {
   };
 
   const handleNavClick = (id) => {
-    // Calcula a posição do destino ANTES de soltar o body fixado
-    // offsetTop é relativo ao documento e não muda com position:fixed
     const targetTop = getElementTop(id);
-
     setIsClosing(true);
     setTimeout(() => {
       setMenuOpen(false);
       setIsClosing(false);
-      // Aguarda um frame para o body ser restaurado, depois scrolla
       requestAnimationFrame(() => {
         if (targetTop !== null) {
           window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
@@ -170,7 +160,17 @@ export default function Header() {
               </button>
             ))}
 
-            {/* CTA visível apenas no menu mobile - WhatsApp */}
+            {/* CTAs visíveis apenas no menu mobile */}
+            <a
+              href={CLIENTE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mobile-cta mobile-cta--secondary"
+              onClick={closeMenu}
+            >
+              Área do Cliente
+            </a>
+
             <a
               href={WHATSAPP_URL}
               target="_blank"
@@ -183,16 +183,28 @@ export default function Header() {
           </div>
         </nav>
 
-        {/* CTA Desktop - WhatsApp */}
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn--outline desktop-only"
-          aria-label="Contratar PRFIBER pelo WhatsApp"
-        >
-          Contratar Agora
-        </a>
+        {/* CTAs Desktop */}
+        <div className="header__cta-group desktop-only">
+          <a
+            href={CLIENTE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn--ghost"
+            aria-label="Acessar Área do Cliente"
+          >
+            Área do Cliente
+          </a>
+
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn--outline"
+            aria-label="Contratar PRFIBER pelo WhatsApp"
+          >
+            Contratar Agora
+          </a>
+        </div>
 
         {/* Hamburger */}
         <button
