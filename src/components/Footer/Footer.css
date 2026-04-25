@@ -201,12 +201,12 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: linear-gradient(90deg, #0ea5e9, #6097f5);
+  background: linear-gradient(90deg, #7e8c92, #6097f5);
   transition: width 0.3s ease;
 }
 
 .dev-link:hover {
-  color: #0ea5e9;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .dev-link:hover::after {

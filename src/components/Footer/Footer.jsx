@@ -84,7 +84,7 @@ export default function Footer() {
             <h4>Contato</h4>
             <ul>
               <li><a href="tel:+5541999976337"><IconPhone /> (41) 99997-6337</a></li>
-              <li><a href="mailto:financeiro.prfiber@gmail.com"><IconMail /> financeiro.prfiber@gmail.com</a></li>
+              <li><a href="mailto:sac@prfiber.com.br"><IconMail /> sac@prfiber.com.br</a></li>
               <li><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"><IconWhatsApp /> WhatsApp</a></li>
             </ul>
           </div>
