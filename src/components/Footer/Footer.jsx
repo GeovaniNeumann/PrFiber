@@ -1,6 +1,6 @@
 import './Footer.css';
-import footerLogo from '../../assets/imgheader.png';
-import anatelLogo from '../../assets/anatel.png';
+import footerLogo from '../../assets/imgheader.webp';
+import anatelLogo from '../../assets/anatel.webp';
 
 const scrollTo = (id) => {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });

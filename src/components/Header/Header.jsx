@@ -1,6 +1,6 @@
 import './Header.css';
-import headerLogo from '../../assets/imgheader.png';
-import menuMobileBg from '../../assets/imgmenumobile.png';
+import headerLogo from '../../assets/imgheader.webp';
+import menuMobileBg from '../../assets/imgmenumobile.webp';
 import { useEffect, useState, useRef } from 'react';
 
 const getElementTop = (id) => {

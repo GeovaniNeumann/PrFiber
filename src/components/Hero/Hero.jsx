@@ -3,16 +3,16 @@ import { useEffect, useState } from 'react';
 import SEO from "../SEO";
 
 // Desktop images
-import logoImage from '../../assets/carrosselhero/logo.png';
-import familiaImage from '../../assets/carrosselhero/filme.png';
-import gamerImage from '../../assets/carrosselhero/gamer.png';
-import homeImage from '../../assets/carrosselhero/home.png';
+import logoImage from '../../assets/carrosselhero/logo.webp';
+import familiaImage from '../../assets/carrosselhero/filme.webp';
+import gamerImage from '../../assets/carrosselhero/gamer.webp';
+import homeImage from '../../assets/carrosselhero/home.webp';
 
 // Mobile images
-import img1mobile from '../../assets/heromobileimg/img1mobile.png';
-import img2mobile from '../../assets/heromobileimg/img2mobile.png';
-import img3mobile from '../../assets/heromobileimg/img3mobile.png';
-import img4mobile from '../../assets/heromobileimg/img4mobile.png';
+import img1mobile from '../../assets/heromobileimg/img1mobile.webp';
+import img2mobile from '../../assets/heromobileimg/img2mobile.webp';
+import img3mobile from '../../assets/heromobileimg/img3mobile.webp';
+import img4mobile from '../../assets/heromobileimg/img4mobile.webp';
 
 const scrollTo = (id) => {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });

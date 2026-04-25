@@ -1,5 +1,5 @@
 import './About.css';
-import aboutImage from '../../assets/imgabout.png';
+import aboutImage from '../../assets/imgabout.webp';
 import { useEffect, useRef, useState } from 'react';
 
 function useInView(threshold = 0.2) {

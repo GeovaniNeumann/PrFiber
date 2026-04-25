@@ -1,5 +1,5 @@
 import './AppCta.css';
-import imgapp from '../../assets/imgapp.png'; // IMPORTANDO A IMAGEM
+import imgapp from '../../assets/imgapp.webp'; // IMPORTANDO A IMAGEM
 
 const BAR_HEIGHTS = [65, 80, 95, 100, 88, 72, 55];
 
