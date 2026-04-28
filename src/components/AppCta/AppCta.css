@@ -2,7 +2,7 @@
 
 .app-cta {
   /* IMAGEM DE FUNDO + OVERLAY ESCURO PARA CONTRASTE */
-  background: linear-gradient(135deg, rgba(13, 42, 99, 0.85), rgba(10, 31, 72, 0.92)), url('../../assets/imgapp.png');
+  background: linear-gradient(135deg, rgba(13, 42, 99, 0.85), rgba(10, 31, 72, 0.92)), url('../../assets/imgapp.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

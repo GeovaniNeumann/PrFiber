@@ -1,11 +1,22 @@
 import './AppCta.css';
-import imgapp from '../../assets/imgapp.webp'; // IMPORTANDO A IMAGEM
-
-const BAR_HEIGHTS = [65, 80, 95, 100, 88, 72, 55];
+import imgapp from '../../assets/imgapp.webp';
 
 export default function AppCta() {
+  // Estilo dinâmico para garantir que o Vite/Webpack encontre a imagem
+  const sectionStyle = {
+    background: `linear-gradient(135deg, rgba(13, 42, 99, 0.85), rgba(10, 31, 72, 0.92)), url(${imgapp})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed'
+  };
+
   return (
-    <section className="app-cta" aria-labelledby="app-cta-title">
+    <section 
+      className="app-cta" 
+      style={sectionStyle} 
+      aria-labelledby="app-cta-title"
+    >
       <div className="app-cta__inner">
         {/* ── TEXTO ── */}
         <div className="app-cta__text">
@@ -51,32 +62,16 @@ export default function AppCta() {
           </ul>
 
           <div className="app-cta__buttons">
-            <a
-              href="https://apps.apple.com/br/app/app-provedor/id1564606498"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="store-btn store-btn--apple"
-              aria-label="Baixar PR Fiber na App Store"
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.4c1.39.07 2.35.74 3.16.74.83 0 2.38-.91 4.01-.77 1.5.12 2.87.84 3.62 2.28-3.27 1.97-2.75 6.61.21 7.83-.67 1.84-1.54 3.64-3 5.8M13 3.5c.12-2.05 1.85-3.5 3.82-3.5.15 2.43-2.08 4.08-3.82 3.5z"/>
-              </svg>
+            <a href="https://apps.apple.com/br/app/app-provedor/id1564606498" target="_blank" rel="noopener noreferrer" className="store-btn store-btn--apple" aria-label="Baixar na App Store">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.4c1.39.07 2.35.74 3.16.74.83 0 2.38-.91 4.01-.77 1.5.12 2.87.84 3.62 2.28-3.27 1.97-2.75 6.61.21 7.83-.67 1.84-1.54 3.64-3 5.8M13 3.5c.12-2.05 1.85-3.5 3.82-3.5.15 2.43-2.08 4.08-3.82 3.5z"/></svg>
               <div className="store-btn__label">
                 <span className="store-btn__sub">Baixar na</span>
                 <span className="store-btn__name">App Store</span>
               </div>
             </a>
 
-            <a
-              href="https://play.google.com/store/apps/details?id=br.codize.appprovedor"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="store-btn store-btn--google"
-              aria-label="Baixar PR Fiber no Google Play"
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M3.18 23.76c.28.16.6.19.9.09l11.35-6.55-2.43-2.43-9.82 8.89zm15.68-15.3L4.38.65C4.08.49 3.75.5 3.47.66L13.12 10.3l5.74-1.84zM1.94 1.6C1.68 1.87 1.5 2.25 1.5 2.73v18.54c0 .48.18.86.44 1.13l.08.07L12.24 12l-.08-.08L1.94 1.6zm18.98 9.3l-2.56-1.48-2.74.87L18.8 13.6l2.12-1.22c.6-.35.6-1.23 0-1.58z"/>
-              </svg>
+            <a href="https://play.google.com/store/apps/details?id=br.codize.appprovedor" target="_blank" rel="noopener noreferrer" className="store-btn store-btn--google" aria-label="Baixar no Google Play">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.28.16.6.19.9.09l11.35-6.55-2.43-2.43-9.82 8.89zm15.68-15.3L4.38.65C4.08.49 3.75.5 3.47.66L13.12 10.3l5.74-1.84zM1.94 1.6C1.68 1.87 1.5 2.25 1.5 2.73v18.54c0 .48.18.86.44 1.13l.08.07L12.24 12l-.08-.08L1.94 1.6zm18.98 9.3l-2.56-1.48-2.74.87L18.8 13.6l2.12-1.22c.6-.35.6-1.23 0-1.58z"/></svg>
               <div className="store-btn__label">
                 <span className="store-btn__sub">Disponível no</span>
                 <span className="store-btn__name">Google Play</span>
